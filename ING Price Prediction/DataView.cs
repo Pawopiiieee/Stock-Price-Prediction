@@ -1,7 +1,7 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Transforms.TimeSeries;
 
-namespace ING_Price_Prediction
+namespace Stock_Price_Prediction
 {
    class DataView
     {
@@ -9,11 +9,11 @@ namespace ING_Price_Prediction
         {
             MLContext context = new MLContext();
 
-            var data = context.Data.LoadFromTextFile<INGPrice>("ING.csv",',', true);
+            var data = context.Data.LoadFromTextFile<StockPrice>("data.csv",',', true);
 
             var pipeline = context.Forecasting.ForecastBySsa(
                 outputColumnName: nameof(ResultModel.PredictedPrice),
-                inputColumnName: nameof(INGPrice.Close),
+                inputColumnName: nameof(StockPrice.Close),
                 confidenceLevel: 0.95F,
                 confidenceLowerBoundColumn: nameof(ResultModel.ConfidenceLowerBound),
                 confidenceUpperBoundColumn: nameof(ResultModel.ConfidenceUpperBound),
@@ -25,7 +25,7 @@ namespace ING_Price_Prediction
 
             var model = pipeline.Fit(data);   //model 
 
-            var prediction = model.CreateTimeSeriesEngine<INGPrice, ResultModel>(context);  //forcasting the price
+            var prediction = model.CreateTimeSeriesEngine<StockPrice, ResultModel>(context);  //forcasting the price
 
             var result = prediction.Predict();  //predicted value
 

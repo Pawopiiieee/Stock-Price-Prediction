@@ -1,5 +1,5 @@
 ﻿
-namespace ING_Price_Prediction
+namespace Stock_Price_Prediction
 {
     class ResultModel
     {

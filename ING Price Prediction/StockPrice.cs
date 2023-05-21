@@ -1,9 +1,9 @@
 ﻿using Microsoft.ML;
 using Microsoft.ML.Data;
 
-namespace ING_Price_Prediction
+namespace Stock_Price_Prediction
 {
-    public class INGPrice
+    public class StockPrice
     {
         [LoadColumn(0)]
         public DateTime Date { get; set; }

@@ -1,4 +1,4 @@
 ﻿
-using ING_Price_Prediction;
+using Stock_Price_Prediction;
 
 DataView.GetData();
